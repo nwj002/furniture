@@ -32,20 +32,18 @@ header {
 .logo {
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--text-color);
-}
-.logo span {
-  color: var(--main-color);
 }
 .navbar {
   position: relative;
   display: flex;
+  align-items: center;
 }
 .navbar a {
   font-size: 1rem;
   padding: 10px 20px;
   font-weight: 500;
   color: var(--text-color);
+  margin-right: 1rem;
 }
 .navbar a:hover {
   color: var(--main-color);
@@ -58,7 +56,7 @@ header {
 .home{
   width: 100%;
   min-height: 100vh;
-  background-image: url('../images/background.jpg');
+  background-image: url('../images/bbg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: right;
@@ -101,17 +99,33 @@ header {
   grid-template-columns: repeat(auto-fit, minmax(300px, auto));
   gap: 1rem;
   margin-top: 2rem;
+
 }
 .box {
+  width: 250px;
+  height: 350px;
   position: relative;
-  box-shadow: 1px 4px 4px rgb(0, 0, 0, 0.1);
-  border-radius: 44px 4px 4px 4px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  border-radius: 8px; /* Add rounded corners */
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.shop-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Display 5 items in a row */
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.box:hover {
+  transform: translateY(-5px); /* Lift the box slightly on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Darker shadow on hover */
 }
 .box .box-img {
   width: 100%;
-  height: 400px;
+  height: 200px;
   overflow: hidden;
-  border-radius: 44px 4px 0 0;
+  border-radius: 8px 8px 0 0;
 }
 .box .box-img img {
   width: 100%;
@@ -119,24 +133,22 @@ header {
   object-fit: cover;
   object-position: center;
 }
-.box .box-img img:hover {
-  transform: scale(1.1);
-  transition: 0.5s;
-}
 .title-price {
+  padding: 8px 12px;
+  height: 120px;
   display: flex;
   justify-content: space-between;
-  padding: 12px;
+  font-size: 1.1rem;
 }
 .title-price h3 {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
+  color: black;
 }
 .box span {
-  font-size: 1.1rem;
   font-weight: 500;
-  padding-left: 12px;
-  color: var(--main-color);
+  font-size: 1rem;
+  color: black;
 }
 .stars .bx {
   color: var(--main-color);
@@ -145,11 +157,11 @@ header {
   position: absolute;
   bottom: 0;
   right: 0;
-  padding: 7px;
   font-size: 20px;
-  color: #fff;
-  border-radius: 4px 0 4px 0;
   background: var(--main-color);
+  color: white;
+  border-radius: 4px;
+  padding: 8px;
 }
 .box .bx-cart:hover {
   background: #bc5980;
@@ -200,7 +212,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url('../images/bg.jpg');
+  background-image: url('../images/background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -232,6 +244,7 @@ header {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, auto));
   gap: 1rem;
+  background-color: #F97F06F2;
 }
 .footer-box h2 {
   font-size: 1.2rem;
@@ -239,7 +252,7 @@ header {
   margin-bottom: 10px;
 }
 .footer-box span {
-  color: var(--main-color);
+  color: black;
 }
 .footer-box p {
   font-size: 00.938rem;
@@ -310,17 +323,22 @@ header {
     right: 0;
     display: flex;
     flex-direction: column;
-    background: #fff;
     box-shadow: 0 4px 4px rgb(0 0 0 /10%);
     transition: 0.2s ease;
     text-align: center;
+    align-items: flex-start; /* Align links to the left for mobile */
+    background: var(--main-color);
   }
+
   .navbar a {
     padding: 1.5rem;
     display: block;
+    display: block;
+    margin: 0;
+    color: white; /
   }
   .navbar.active {
-    top: 100%;
+    top: 60px;
   }
   .navbar a:hover {
     color: #fff;
@@ -333,6 +351,16 @@ header {
   .about-img {
     padding-top: 1rem;
     order: 2;
+  }
+  .shop-container {
+    grid-template-columns: repeat(2, 1fr); /* Display 2 items in a row for smaller screens */
+  }
+  .new-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, auto)); /* Adjust column width for responsiveness */
+  }
+  .box {
+    width: 200px; /* Adjust the box width for smaller screens */
+    height: 200px; /* Adjust the box height for smaller screens */
   }
 }
 @media (max-width: 491px) {
