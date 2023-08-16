@@ -27,12 +27,9 @@ public class UserRepositoryTest {
     @Order(1)
     public void saveUserTest() {
 
-//        User User = new User();
-//        User.setFullname("rak");
-
         User user = User.builder()
-                .fullname("rak")
-                .email("a@g.com")
+                .fullname("nawaraj")
+                .email("nwj@gmail.com")
                 .password("1234")
                 .build();
 
@@ -47,8 +44,8 @@ public class UserRepositoryTest {
     public void getUserTest() {
 
         User user = User.builder()
-                .fullname("rak")
-                .email("a@g.com")
+                .fullname("nawaraj")
+                .email("nwj@gmail.com")
                 .password("1234")
                 .build();
 
@@ -65,8 +62,8 @@ public class UserRepositoryTest {
     @Order(3)
     public void getListOfUserTest(){
         User user = User.builder()
-                .fullname("rak")
-                .email("a@g.com")
+                .fullname("nwj")
+                .email("nwj@gmail.com")
                 .password("1234")
                 .build();
 
@@ -82,8 +79,8 @@ public class UserRepositoryTest {
     public void updateUserTest(){
 
         User user = User.builder()
-                .fullname("rak")
-                .email("a@g.com")
+                .fullname("nwj")
+                .email("nwj@gmail.com")
                 .password("1234")
                 .build();
 
@@ -92,11 +89,11 @@ public class UserRepositoryTest {
 
         User user1  = userRepo.findById(user.getId()).get();
 
-        user1.setFullname("new name");
+        user1.setFullname("nwj");
 
         User userUpdated  = userRepo.save(user);
 
-        Assertions.assertThat(userUpdated.getFullname()).isEqualTo("suman");
+        Assertions.assertThat(userUpdated.getFullname()).isEqualTo("nwj");
 
     }
 
@@ -105,8 +102,8 @@ public class UserRepositoryTest {
     public void deleteUserTest(){
 
         User user = User.builder()
-                .fullname("rak")
-                .email("a@g.com")
+                .fullname("nwj")
+                .email("nwj@gmail.com")
                 .password("1234")
                 .build();
 
@@ -120,7 +117,7 @@ public class UserRepositoryTest {
         userRepo.delete(user1);
 
         User user2 = null;
-        Optional<User> optionalUser = userRepo.findByEmail("a@g.com");
+        Optional<User> optionalUser = userRepo.findByEmail("nwj@gmail.com");
         if(optionalUser.isPresent()){
             user2 = optionalUser.get();
         }

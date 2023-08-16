@@ -57,7 +57,7 @@ public class UserController {
         return "index";
     }
 
-    @GetMapping("/signup") //first maa chaine kura
+    @GetMapping("/signup")
     public String getSignupPage(Model model) {
         model.addAttribute("create", new UserPojo());
         return "signup";

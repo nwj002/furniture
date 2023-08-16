@@ -1,3 +1,60 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--  <title>Product</title>-->
+<!--  <link rel="stylesheet" th:href="@{~/css/product.css}">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class = "card-wrapper">-->
+<!--  <div class = "card">-->
+<!--    &lt;!&ndash; card left &ndash;&gt;-->
+<!--    <div class = "product-imgs">-->
+<!--      <div class = "img-display">-->
+<!--        <div class = "img-showcase">-->
+<!--          <img th:src="'data:image/png;base64,'+${productdata.imageBase64}" alt="The img is corrupt.">-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--    </div>-->
+<!--    &lt;!&ndash; card right &ndash;&gt;-->
+<!--    <div class = "product-content">-->
+<!--      <h2 class = "product-title" th:text="${productdata.getProductname()}"></h2>-->
+
+
+
+<!--      <div class = "product-price">-->
+<!--        <p class = "new-price">New Price: <span th:text="${productdata.getPrice()}"></span></p>-->
+<!--      </div>-->
+
+<!--      <div class = "product-detail">-->
+<!--        <h2>About this Product: </h2>-->
+<!--        <ul>-->
+<!--          <p>Name: <span th:text="${productdata.getProductname()}"></span></p>-->
+<!--          <p>Brand: <span th:text="${productdata.getBrand()}"></span></p>-->
+<!--          <p>Category: <span th:text="${productdata.getCatrgory()}"></span></p>-->
+<!--          <p>Color: <span th:text="${productdata.getColor()}"></span></p>-->
+<!--          <p>Price: <span th:text="${productdata.getPrice()}"></span></p>-->
+<!--          <p>Description: <span th:text="${productdata.getDescription()}"></span></p>-->
+
+<!--          <form th:action="@{/user/saveorder}" th:object="${order}" th:method="post" >-->
+<!--            <input type="text" hidden="hidden" name="user_id"  th:value="${info.id}">  <br>-->
+<!--            <input type="text" hidden="hidden" name="product_id"  th:value="${productdata.id}">  <br>-->
+
+<!--            Quantity: <input type="number"  th:field="*{quantity}">  <br>-->
+<!--            Address:  <input type="text"  th:field="*{address}"> <br>-->
+<!--            <button type="submit" class = "btn">Order Now</button>-->
+<!--          </form>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,48 +62,82 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Product</title>
-  <link rel="stylesheet" th:href="@{~/css/product.css}">
+  <style>
+    .card-wrapper {
+      display: flex;
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+    }
+
+    .product-content {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .product-imgs {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .img-showcase {
+      width: 500px; /* Set your desired width */
+      height: 500px; /* Set your desired height */
+      overflow: hidden;
+    }
+
+    .img-showcase img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .navbar {
+      background-color: black; /* Set your desired background color */
+      color: white;
+      padding: 10px;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin-right: 20px;
+    }
+  </style>
 </head>
 <body>
-<div class = "card-wrapper">
-  <div class = "card">
-    <div class = "product-imgs">
-      <div class = "img-display">
-        <div class = "img-showcase">
-          <img th:src="'data:image/png;base64,'+${productdata.imageBase64}" alt="The img is corrupt.">
-        </div>
-      </div>
+<header>
+  <ul class="navbar">
+    <a th:href="@{~/user/homepage}" class="navbar-brand" style="color: #f97f06f2"><b>फर्नीचर</b> <span style="color: white"><b>Nepal.</b></span></a>
+    <a class="nav-link text-danger" th:href="@{~/logout}">Log-out</a>
 
-    </div>
-    <!-- card right -->
-    <div class = "product-content">
-      <h2 class = "product-title" th:text="${productdata.getProductname()}"></h2>
+  </ul>
+</header>
+<div class="card-wrapper">
+  <div class="product-content">
+    <h2 class="product-title" th:text="${productdata.getProductname()}"></h2>
+    <p class="new-price">New Price: <span th:text="${productdata.getPrice()}"></span></p>
+    <p class="new-brand">Brand: <span th:text="${productdata.getBrand()}"></span></p>
+    <p class="new-category">Brand: <span th:text="${productdata.getCatrgory()}"></span></p></p>
+    <p class="new-color">Brand: <span th:text="${productdata.getColor()}"></span></p></p>
+    <p class="new-description">Brand: <span th:text="${productdata.getDescription()}"></span></p></p>
+
+  <form th:action="@{/user/saveorder}" th:object="${order}" th:method="post">
+    <input type="text" hidden="hidden" name="user_id" th:value="${info.id}">
+    Quantity: <input type="number"  th:field="*{quantity}">  <br>
+    <input type="text" hidden="hidden" name="product_id" th:value="${productdata.id}">
+    Address:  <input type="text"  th:field="*{address}"> <br>
 
 
+    <button type="submit" class="btn">Order Now</button>
+  </form>
+</div>
 
-      <div class = "product-price">
-        <p class = "new-price">New Price: <span th:text="${productdata.getPrice()}"></span></p>
-      </div>
-
-      <div class = "product-detail">
-        <h2>About this Product: </h2>
-        <ul>
-          <p>Name: <span th:text="${productdata.getProductname()}"></span></p>
-          <p>Brand: <span th:text="${productdata.getBrand()}"></span></p>
-          <p>Category: <span th:text="${productdata.getCatrgory()}"></span></p>
-          <p>Color: <span th:text="${productdata.getColor()}"></span></p>
-          <p>Price: <span th:text="${productdata.getPrice()}"></span></p>
-          <p>Description: <span th:text="${productdata.getDescription()}"></span></p>
-
-          <form th:action="@{/user/saveorder}" th:object="${order}" th:method="post" >
-            <input type="text" hidden="hidden" name="user_id"  th:value="${info.id}">  <br>
-            <input type="text" hidden="hidden" name="product_id"  th:value="${productdata.id}">  <br>
-
-            Quantity: <input type="number"  th:field="*{quantity}">  <br>
-            Address:  <input type="text"  th:field="*{address}"> <br>
-            <button type="submit" class = "btn">Order Now</button>
-          </form>
-        </ul>
+  <div class="product-imgs">
+    <div class="img-display">
+      <div class="img-showcase">
+        <img th:src="'data:image/png;base64,'+${productdata.imageBase64}" alt="The img is corrupt.">
       </div>
     </div>
   </div>
